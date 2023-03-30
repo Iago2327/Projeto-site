@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript & JQuery</title>
+</head>
+<body>
+    <h1 align="center">Arvore Don</h1>
+    <p id="datahora">Data e Hora</p>
+    <p id="CSSedit">JavaScript alterando CSS3 em tempo de execução</p>
+    <h3 id="id3">Qualquer bobagem</h3>
+
+    <!--JavaScript Inline-->
+    <button type="button" onclick="document.getElementById('datahora').innerHTML=Date()">Clique para mudar a Data/Hora</button>
+
+
+    <div id="data-hora"></div>
+    <script>
+        // Função para formatar 1 em 01
+        const zeroFill = n => {
+            return ('0' + n).slice(-2);
+        }
+
+        // Cria intervalo
+        const interval = setInterval(() => {
+            // Pega o horário atual
+            const now = new Date();
+
+            // Formata a data conforme dd/mm/aaaa hh:ii:ss
+            const dataHora = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1)) + '/' + now.getFullYear() + ' ' + zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
+
+            // Exibe na tela usando a div#data-hora
+            document.getElementById('data-hora').innerHTML = dataHora;
+        }, 1000);
+    </script>
+    <button type="button" onclick="document.getElementById('CSSedit').style.fontSize='40px'">Clique para alterar o CSS aumentando a letra</button>
+    <button type="button" onclick="document.getElementById('id3').style.display='none'">Ocultar texto"Qualquer Bobagem"</button>
+    <!--JavaScript Inside-->
+    <p id="conta"></p>
+    <p id="car"></p>
+    <p id="person"></p>
+    <p id="window"></p><button onclick="openWin()">Abrir Janela</button>
+    <script>
+        var x=(3+18)*14, y=10, car=["Fusca","Gol","Brasilia","Passat"]
+        person = {firstname:"Jose",lastname:"da Silva", age:50,eyecolor:"blue"};
+        document.getElementById("conta").innerHTML = x;
+        document.getElementById("conta").innerHTML = y;
+        document.getElementById("car").innerHTML = car[2];
+        document.getElementById("person").innerHTML = person.firstname+" tem "+person.age+" anos de idade.";
+        function openWin(){
+            var myWindow = window.open("","","width=400,height=200");
+            myWindow.opener.document.getElementById("window").innerHTML = "Abrir Janela"
+        }
+</script>
+
+</body>
+</html>
